@@ -1,6 +1,10 @@
 class Project {
   static projectList = [];
 
+  static removeProject(index) {
+    Project.projectList.splice(index, 1);
+  }
+
   constructor(title) {
     this.title = title;
     this.taskList = [];
@@ -12,10 +16,7 @@ class Project {
   }
 
   removeTask(index) {
-    this.splice(index, 1);
+    this.taskList.splice(index, 1);
   }
-
 }
-
-
-
+export { Project as default };
