@@ -39,13 +39,12 @@
         </div>
     </section>
 </main>
-
 <div class="overlay d-none">
-    <div class="form-container d-none">
+    <div class="form-container d-none" id="projectForm">
         <div>
             <div class="d-flex justify-content-between">
                 <h5>Project Form</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button id="projectClose" type="button" class="btn-close" aria-label="Close"></button>
             </div>
             <div>
                 <form>
@@ -59,7 +58,7 @@
                 </form>
             </div>
             <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button id="submitProject" type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
@@ -102,7 +101,6 @@
         </div>
     </div>
 </div>
-
 
 <script src="main.js"></script>
 </body>
