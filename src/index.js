@@ -1,9 +1,10 @@
 import LocalStorage from './modules/models/localStorage';
-// import Project from './modules/models/project';
-// import Todo from './modules/models/todo';
+import Project from './modules/models/project';
+import Todo from './modules/models/todo';
 //
-import  projectController from './modules/controllers/project'
-// LocalStorage.parseProject();
+import projectController from './modules/controllers/project';
+import taskController from './modules/controllers/todo';
+// LocalStorage.parse();
 // console.log(Project.projectList);
 // const projets = document.getElementById('projects');
 // const tasks = document.getElementById('tasks');
@@ -12,6 +13,8 @@ import  projectController from './modules/controllers/project'
 // projets.appendChild(p1);
 // p1.textContent = Project.projectList[0].taskList[0].title;
 // tasks.appendChild(p1);
-LocalStorage.parseProject();
+// LocalStorage.parse();
+const defaultProject = new Project('Default');
+defaultProject.addTask(new Todo('task1', 'Example Task', '2021-03-13'));
 projectController();
-
+taskController();

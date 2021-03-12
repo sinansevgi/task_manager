@@ -1,46 +1,49 @@
-const renderProject = (() => {
-  const projectButton = document.getElementById('createProject');
+const projectModule = (() => {
   const projectList = document.getElementById('projectList');
- const projectForm = document.getElementById("projectForm");
+  const projectForm = document.getElementById('projectForm');
 
   // Project form input
-  projectTitle = document.getElementById("projectTitle");
-  
+  const projectTitle = document.getElementById('projectTitle');
 
-  const createForm = () => { 
+
+  const createForm = () => {
     projectForm.parentNode.classList.remove('d-none');
     projectForm.classList.remove('d-none');
   };
 
 
   const destroyForm = () => {
-    projectTitle.value = "";
+    projectTitle.value = '';
     projectForm.parentNode.classList.add('d-none');
     projectForm.classList.classList.add('d-none');
-  }
+  };
 
-  const getFormData = () => {
-    return projectTitle.value
-  }
+  const getFormData = () => projectTitle.value;
 
-  const renderProjects = (project) => {
+  const renderProject = (project, index) => {
     const projectContainer = document.createElement('li');
-    const projectLink = document.createElement('a'); 
-    projectContainer.classList.add('list-group-item', 'list-group-item-action');
+    const projectLink = document.createElement('a');
+    const removeButton = document.createElement('i');
+    projectLink.setAttribute('data-attribute', index);
+    projectLink.classList.add('projectLinks');
+    removeButton.classList.add('btn', 'btn-danger', 'bi', 'bi-trash');
+    removeButton.setAttribute('data-attribute', index);
+    projectContainer.classList.add('list-group-item', 'list-group-item-action', 'd-flex', 'justify-content-between');
+    projectContainer.setAttribute('data-attribute', index);
     projectLink.textContent = project.title;
     projectContainer.appendChild(projectLink);
-    projectList.appendChild(projectContainer); 
-  }
+    projectContainer.appendChild(removeButton);
+    projectList.appendChild(projectContainer);
+  };
 
- 
 
   return {
-    createForm, 
+    createForm,
     getFormData,
     destroyForm,
-    renderProjects
-  }
+    renderProject,
+  };
 })();
 
 
-export { renderProject as default }
+export { projectModule as default };

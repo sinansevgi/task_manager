@@ -7,7 +7,7 @@ class LocalStorage {
   }
 
 
-  static parseProject() {
+  static parse() {
     Object.keys(window.localStorage).forEach(key => {
       const tmp = (key) => new Project(key);
       tmp(key);
