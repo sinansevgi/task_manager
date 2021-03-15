@@ -14,7 +14,5 @@ import taskController from './modules/controllers/todo';
 // p1.textContent = Project.projectList[0].taskList[0].title;
 // tasks.appendChild(p1);
 // LocalStorage.parse();
-const defaultProject = new Project('Default');
-defaultProject.addTask(new Todo('task1', 'Example Task', '2021-03-13'));
 projectController();
 taskController();

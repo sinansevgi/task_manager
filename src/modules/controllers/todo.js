@@ -1,36 +1,57 @@
 import Todo from '../models/todo';
 import Project from '../models/project';
 import taskModule from '../view/todo_view';
+import LocalStorage from '../models/localStorage'
 
 const taskController = () => {
-  const createTaskButton = document.getElementById('createTask');
   const closeTaskButton = document.getElementById('taskClose');
-  const submitButton = document.getElementById('submitTask');
-  const projectLinks = document.querySelectorAll('.projectLinks');
+  const submitTask = document.getElementById('submitTask');
+  const projectContainer = document.getElementById('projects');
 
   const taskListIterate = (taskList) => {
     taskList.forEach((task) => { taskModule.renderTask(task, taskList.indexOf(task)); });
   };
 
-  projectLinks.forEach((link) => {
-    const myId = Number(link.getAttribute('data-attribute'));
-    const taskList = Project.projectList[myId].taskList;
-    console.log(taskList);
-    link.addEventListener('click', () => {
+  const bindCreateEvent = () => {
+    const createTaskButton = document.getElementById('createTask');
+    createTaskButton.addEventListener('click', () => {
+      taskModule.createForm();
+  });
+
+  }
+
+  const linkifyProjects = (event) => {
+    let node = event.target;
+    if(event.target && event.target.className == "projectLinks") {
+      const myId = Number(event.target.getAttribute('data-attribute'));
+      const taskList = Project.projectList[myId].taskList;
       taskModule.renderSection(myId);
-      taskListIterate(taskList);
-    });
-  });
+      taskListIterate(taskList); 
+      bindCreateEvent();
+    }
+  }
+
+  submitTask.addEventListener('click', () => {
+    const dataAttribute = Number(document.getElementById("taskWrapper").getAttribute("data-attribute"))
+    const formData = taskModule.getFormData();
+    const task = new Todo(formData.task, formData.description, formData.due);
+    task.setPriority(formData.priority);
+    const project = Project.projectList[dataAttribute]
+    project.addTask(task);
+
+    LocalStorage.refresh(project);
+    const index = project.taskList.indexOf(task);
+    taskModule.renderTask(task, index);
+    taskModule.destroyForm();
+  })
+
+  
+  
+  projectContainer.addEventListener('click', (event) => { linkifyProjects(event) });
 
 
-  submitButton.addEventListener('click', () => {
-  });
-
-  createTaskButton.addEventListener('click', () => {
-    taskModule.createForm();
-  });
-
-  closeTaskButton.addEventListener('click', () => {
+ 
+   closeTaskButton.addEventListener('click', () => {
     taskModule.destroyForm();
   });
 };

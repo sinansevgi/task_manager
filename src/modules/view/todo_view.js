@@ -18,7 +18,7 @@ const taskModule = (() => {
     const taskWrap = document.createElement('div');
     const taskCreateButton = document.createElement('button');
     const listGroup = document.createElement('div');
-    taskCreateButton.setAttribute('id', 'createProject');
+    taskCreateButton.setAttribute('id', 'createTask');
     taskCreateButton.classList.add('btn', 'btn-outline-primary', 'my-2');
     taskCreateButton.setAttribute('data-attribute', parentProject);
     taskCreateButton.textContent = 'Create a New Task';
@@ -26,7 +26,7 @@ const taskModule = (() => {
     listGroup.setAttribute('id', 'list-group');
     taskWrap.appendChild(taskCreateButton);
     taskWrap.setAttribute('id', 'taskWrapper');
-    taskWrap.setAttribute('data-attribute', 'parentProject');
+    taskWrap.setAttribute('data-attribute', parentProject);
     taskWrap.appendChild(listGroup);
     taskList.appendChild(taskWrap);
   };
@@ -54,10 +54,49 @@ const taskModule = (() => {
 
 
   const renderTask = (task, index) => {
+    
     const listGroup = document.getElementById('list-group');
-    const title = document.createElement('p');
-    title.textContent = task.title;
-    listGroup.appendChild(title);
+    const taskItem = document.createElement('div');
+    const header = document.createElement('h3');
+    const checkboxContainer = document.createElement('div');
+    const checkbox = document.createElement('input');
+    const headerContainer = document.createElement('div');
+    const hr = document.createElement('hr');
+    const description = document.createElement('p');
+    const priority = task.getPriority();
+  
+    header.textContent = task.title;
+    description.textContent = task.description;
+
+    header.classList.add('alert-heading');
+    headerContainer.classList.add('d-flex', 'justify-content-between');
+    checkboxContainer.classList.add('form-check', 'form-switch');
+    checkbox.classList.add('form-check-input')
+    checkbox.setAttribute('type', 'checkbox');
+
+    switch(priority) {
+      case 'Urgent':
+        taskItem.classList.add('alert', 'alert-danger');
+        break;
+      case 'Important':
+        taskItem.classList.add('alert', 'alert-warning');
+        break;
+      case 'Not Urgent':
+        taskItem.classList.add('alert', 'alert-primary');
+        break;
+    }
+
+    checkboxContainer.appendChild(checkbox);
+    headerContainer.appendChild(header);
+    headerContainer.appendChild(checkboxContainer);
+
+    taskItem.appendChild(headerContainer);
+    taskItem.appendChild(hr);
+    taskItem.appendChild(description);
+   
+    listGroup.appendChild(taskItem);
+  
+
   };
 
 
