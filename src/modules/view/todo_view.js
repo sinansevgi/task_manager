@@ -52,51 +52,56 @@ const taskModule = (() => {
     };
   };
 
+  const expand = (element) => {
+    const description = element.querySelector('.expandable');
+    description.classList.toggle('expanded');
+  };
 
   const renderTask = (task, index) => {
-    
     const listGroup = document.getElementById('list-group');
     const taskItem = document.createElement('div');
     const header = document.createElement('h3');
     const checkboxContainer = document.createElement('div');
     const checkbox = document.createElement('input');
     const headerContainer = document.createElement('div');
+    const bodyContainer = document.createElement('div');
     const hr = document.createElement('hr');
     const description = document.createElement('p');
     const priority = task.getPriority();
-  
+
     header.textContent = task.title;
     description.textContent = task.description;
 
     header.classList.add('alert-heading');
     headerContainer.classList.add('d-flex', 'justify-content-between');
     checkboxContainer.classList.add('form-check', 'form-switch');
-    checkbox.classList.add('form-check-input')
+    checkbox.classList.add('form-check-input');
     checkbox.setAttribute('type', 'checkbox');
+    bodyContainer.classList.add('expandable');
 
-    switch(priority) {
+    switch (priority) {
       case 'Urgent':
         taskItem.classList.add('alert', 'alert-danger');
         break;
       case 'Important':
         taskItem.classList.add('alert', 'alert-warning');
         break;
-      case 'Not Urgent':
+      default:
         taskItem.classList.add('alert', 'alert-primary');
         break;
     }
 
+    taskItem.addEventListener('click', () => { expand(taskItem); });
     checkboxContainer.appendChild(checkbox);
     headerContainer.appendChild(header);
     headerContainer.appendChild(checkboxContainer);
 
     taskItem.appendChild(headerContainer);
-    taskItem.appendChild(hr);
-    taskItem.appendChild(description);
-   
-    listGroup.appendChild(taskItem);
-  
+    bodyContainer.appendChild(hr);
+    bodyContainer.appendChild(description);
+    taskItem.appendChild(bodyContainer);
 
+    listGroup.appendChild(taskItem);
   };
 
 

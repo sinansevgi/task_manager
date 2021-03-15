@@ -4,7 +4,7 @@ import Todo from './modules/models/todo';
 //
 import projectController from './modules/controllers/project';
 import taskController from './modules/controllers/todo';
-// LocalStorage.parse();
+LocalStorage.parse();
 // console.log(Project.projectList);
 // const projets = document.getElementById('projects');
 // const tasks = document.getElementById('tasks');

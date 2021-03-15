@@ -10,11 +10,11 @@ class Todo {
   }
 
   setPriority(priority) {
-    this.#priority = priority;
+    this.priority = priority;
   }
 
   getPriority() {
-    return this.#priority;
+    return this.priority;
   }
 
   changeStatus() {
