@@ -1,3 +1,5 @@
+import domHelper from '../helpers/domhelper';
+
 const projectModule = (() => {
   const projectList = document.getElementById('projectList');
   const projectForm = document.getElementById('projectForm');
@@ -21,18 +23,12 @@ const projectModule = (() => {
   const getFormData = () => projectTitle.value;
 
   const renderProject = (project, index) => {
-    const projectContainer = document.createElement('li');
-    const projectLink = document.createElement('a');
-    const removeButton = document.createElement('i');
-    projectLink.setAttribute('data-attribute', index);
-    projectLink.classList.add('projectLinks');
-    removeButton.classList.add('btn', 'btn-danger', 'bi', 'bi-trash');
-    removeButton.setAttribute('data-attribute', index);
-    projectContainer.classList.add('list-group-item', 'list-group-item-action', 'd-flex', 'justify-content-between');
-    projectContainer.setAttribute('data-attribute', index);
-    projectLink.textContent = project.title;
-    projectContainer.appendChild(projectLink);
-    projectContainer.appendChild(removeButton);
+    const projectContainer = domHelper.createDomElement('li', { class: 'list-group-item list-group-item-action d-flex justify-content-between', 'data-attribute': index });
+    const projectLink = domHelper.createDomElement('a', { 'data-attribute': index, class: 'projectLinks' }, project.title);
+    const removeButton = domHelper.createDomElement('i', { class: 'btn btn-danger bi bi-trash', 'data-attribute': index });
+
+    domHelper.appendChildren(projectContainer, [projectLink, removeButton]);
+
     projectList.appendChild(projectContainer);
   };
 

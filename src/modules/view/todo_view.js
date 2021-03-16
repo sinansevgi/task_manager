@@ -1,3 +1,5 @@
+import domHelper from '../helpers/domhelper';
+
 const taskModule = (() => {
   const taskList = document.getElementById('tasks');
   const taskForm = document.getElementById('todoForm');
@@ -15,21 +17,16 @@ const taskModule = (() => {
 
   const renderSection = (parentProject) => {
     clearSection();
-    const taskWrap = document.createElement('div');
-    const taskCreateButton = document.createElement('button');
-    const listGroup = document.createElement('div');
-    taskCreateButton.setAttribute('id', 'createTask');
-    taskCreateButton.classList.add('btn', 'btn-outline-primary', 'my-2');
-    taskCreateButton.setAttribute('data-attribute', parentProject);
-    taskCreateButton.textContent = 'Create a New Task';
-    listGroup.classList.add('list-group');
-    listGroup.setAttribute('id', 'list-group');
-    taskWrap.appendChild(taskCreateButton);
-    taskWrap.setAttribute('id', 'taskWrapper');
-    taskWrap.setAttribute('data-attribute', parentProject);
-    taskWrap.appendChild(listGroup);
+
+    const taskWrap = domHelper.createDomElement('div', { id: 'taskWrapper', 'data-attribute': parentProject });
+    const taskCreateButton = domHelper.createDomElement('button', { id: 'createTask', class: 'btn btn-outline-primary my-2', 'data-attribute': parentProject }, 'Create a new Task');
+    const listGroup = domHelper.createDomElement('div', { id: 'list-group', class: 'list-group' });
+
+    domHelper.appendChildren(taskWrap, [taskCreateButton, listGroup]);
     taskList.appendChild(taskWrap);
   };
+
+
   const createForm = () => {
     taskForm.parentNode.classList.remove('d-none');
     taskForm.classList.remove('d-none');
@@ -57,50 +54,34 @@ const taskModule = (() => {
     description.classList.toggle('expanded');
   };
 
-  const renderTask = (task, index) => {
-    const listGroup = document.getElementById('list-group');
-    const taskItem = document.createElement('div');
-    const header = document.createElement('h3');
-    const checkboxContainer = document.createElement('div');
-    const checkbox = document.createElement('input');
-    const headerContainer = document.createElement('div');
-    const bodyContainer = document.createElement('div');
-    const hr = document.createElement('hr');
-    const description = document.createElement('p');
-    const priority = task.getPriority();
-
-    header.textContent = task.title;
-    description.textContent = task.description;
-
-    header.classList.add('alert-heading');
-    headerContainer.classList.add('d-flex', 'justify-content-between');
-    checkboxContainer.classList.add('form-check', 'form-switch');
-    checkbox.classList.add('form-check-input');
-    checkbox.setAttribute('type', 'checkbox');
-    bodyContainer.classList.add('expandable');
-
+  const classifyPriority = (priority) => {
     switch (priority) {
       case 'Urgent':
-        taskItem.classList.add('alert', 'alert-danger');
-        break;
+        return 'alert alert-danger';
       case 'Important':
-        taskItem.classList.add('alert', 'alert-warning');
-        break;
+        return 'alert alert-warning';
       default:
-        taskItem.classList.add('alert', 'alert-primary');
-        break;
+        return 'alert alert-primary';
     }
+  };
+
+  const renderTask = (task, index) => {
+    const listGroup = document.getElementById('list-group');
+    const taskItem = domHelper.createDomElement('div', { class: classifyPriority(task.getPriority()) });
+    const header = domHelper.createDomElement('h3', { class: 'alert-heading' }, task.title);
+    const headerContainer = domHelper.createDomElement('div', { class: 'd-flex justify-content-between' });
+    const checkboxContainer = domHelper.createDomElement('div', { class: 'form-check form-switch' });
+    const checkbox = domHelper.createDomElement('input', { class: 'form-check-input', type: 'checkbox' });
+    const bodyContainer = domHelper.createDomElement('div', { class: 'expandable' });
+    const description = domHelper.createDomElement('p', null, task.description);
+    const hr = document.createElement('hr');
 
     taskItem.addEventListener('click', () => { expand(taskItem); });
+
     checkboxContainer.appendChild(checkbox);
-    headerContainer.appendChild(header);
-    headerContainer.appendChild(checkboxContainer);
-
-    taskItem.appendChild(headerContainer);
-    bodyContainer.appendChild(hr);
-    bodyContainer.appendChild(description);
-    taskItem.appendChild(bodyContainer);
-
+    domHelper.appendChildren(headerContainer, [header, checkboxContainer]);
+    domHelper.appendChildren(bodyContainer, [hr, description]);
+    domHelper.appendChildren(taskItem, [headerContainer, bodyContainer]);
     listGroup.appendChild(taskItem);
   };
 

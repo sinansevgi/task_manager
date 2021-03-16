@@ -20,8 +20,7 @@ const taskController = () => {
   };
 
   const linkifyProjects = (event) => {
-    const node = event.target;
-    if (event.target && event.target.className == 'projectLinks') {
+    if (event.target && event.target.className === 'projectLinks') {
       const myId = Number(event.target.getAttribute('data-attribute'));
       const { taskList } = Project.projectList[myId];
       taskModule.renderSection(myId);
