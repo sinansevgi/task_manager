@@ -28,3 +28,11 @@
 .expanded {
     max-height: 100px;
 }
+
+.alert-heading {
+    cursor: pointer;
+}
+
+.form-check-input {
+    cursor: pointer;
+}

@@ -18,11 +18,11 @@ class Todo {
   }
 
   changeStatus() {
-    this.#status = !(this.#status);
+    this.status = !(this.status);
   }
 
   getStatus() {
-    return this.#status;
+    return this.status;
   }
 }
 export { Todo as default };
