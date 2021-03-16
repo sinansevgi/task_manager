@@ -17,6 +17,10 @@ const domHelper = (() => {
     return element;
   };
 
+  const removeAllChilds = (node) => {
+    while (node.firstChild) { node.removeChild(node.firstChild); }
+  };
+
   const appendChildren = (parent, arrayOfChildren) => {
     arrayOfChildren.forEach((child) => {
       parent.appendChild(child);
@@ -26,6 +30,7 @@ const domHelper = (() => {
   return {
     createDomElement,
     appendChildren,
+    removeAllChilds,
   };
 })();
 

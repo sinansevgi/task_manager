@@ -6,6 +6,10 @@ class LocalStorage {
     window.localStorage.setItem(object.title, JSON.stringify(object.taskList));
   }
 
+  static remove(object) {
+    window.localStorage.removeItem(object.title);
+  }
+
 
   static parse() {
     Object.keys(window.localStorage).forEach(key => {

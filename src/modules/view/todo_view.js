@@ -36,7 +36,7 @@ const taskModule = (() => {
   const destroyForm = () => {
     taskName.value = '';
     taskForm.parentNode.classList.add('d-none');
-    taskForm.classList.classList.add('d-none');
+    taskForm.classList.add('d-none');
   };
 
   const getFormData = () => {
