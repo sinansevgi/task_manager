@@ -1,0 +1,38 @@
+.form-container {
+    position: absolute;
+    width: 80%;
+    max-width: 480px;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -25%);
+    background: white;
+    padding: 2em;
+    border-radius: 3%;
+    z-index: 1;
+}
+.overlay {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.expandable {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.expanded {
+    max-height: 100vh;
+}
+
+.task-title {
+    cursor: pointer;
+}
+
+.form-check-input {
+    cursor: pointer;
+}

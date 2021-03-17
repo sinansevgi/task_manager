@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Manager</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="container-fluid bg-light">
+    <h1 class="text-center">Task Manager App</h1>
+    <section class="row p-2 m-2 bg-white">
+        <div class="col-md-4 p-2" id="projects">
+            <button class="btn btn-outline-primary my-2" id="createProject" type="button">Create a New Project</button>
+
+            <ul class="list-group" id="projectList">
+            </ul>
+
+        </div>
+        <div class="col-md-8 p-2" id="tasks">
+            <div id="taskWrapper">
+
+        </div>
+    </section>
+</main>
+<div class="overlay d-none">
+    <div class="form-container d-none" id="projectForm">
+        <div>
+            <div class="d-flex justify-content-between">
+                <h5 >Project Form</h5>
+                <button id="projectClose" type="button" class="btn-close" aria-label="Close"></button>
+            </div>
+            <div>
+                        <legend>Create a New Project</legend>
+                        <div class="mb-3">
+                            <label for="projectTitle" class="form-label">Project Title</label>
+                            <input type="text" id="projectTitle" class="form-control" placeholder="Project Title">
+                        </div>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button id="submitProject" type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+    <div class="form-container d-none" id="todoForm">
+        <div>
+            <div class="d-flex justify-content-between">
+                <h5>Task Form</h5>
+                <button type="button"  id="taskClose" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div>
+                        <legend>Create a New Task</legend>
+                        <div class="mb-3">
+                            <label for="taskName" class="form-label">Task Name</label>
+                            <input type="text" id="taskName" class="form-control" placeholder="Task Name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="taskDescription" class="form-label">Task Description</label>
+                            <input type="text" id="taskDescription" class="form-control" placeholder="Task Description">
+                        </div>
+                        <div class="mb-3">
+                            <label for="taskDue" class="form-label">Due Date</label>
+                            <input type="date" id="taskDue" class="form-control" placeholder="Due Date">
+                        </div>
+                        <div class="mb-5">
+                            <label for="taskPriority" class="form-label">Priority</label>
+                            <select id="taskPriority" class="form-select">
+                                <option>Urgent</option>
+                                <option>Important</option>
+                                <option>Not Urgent</option>
+                            </select>
+                        </div>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-primary" id="submitTask">Save changes</button>
+                <button type="button" class="btn btn-primary" id="editTask">Save changes</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>

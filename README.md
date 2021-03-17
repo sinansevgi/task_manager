@@ -1,57 +1,65 @@
 # Project Name
 
-> One paragraph statement about the project.
+A task manager app where you can create various projects and add tasks assosiated with that project. 
 
-![screenshot](./app_screenshot.png)
-
-Additional description about the project and its features.
+![screenshot](./screen.png)
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
+- Javascript
+- Bootstrap
+- Webpack
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://sinansevgi.github.io/task_manager)
 
 
 ## Getting Started
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
-To get a local copy up and running follow these simple example steps.
+Please follow the instructions below to clone the application and use it on your local machine.
 
 ### Prerequisites
+Please make sure you have node.js installed on your local machine. 
 
 ### Setup
 
+To clone
+```
+git clone https://github.com/sinansevgi/task_manager
+```
+Navigate to the project folder
+```
+cd task_manager
+```
+
 ### Install
+
+Run NPM
+```
+npm install
+```
+Run webpack to bundle the project and run live-server
+```
+npm run start:dev
+```
 
 ### Usage
 
-### Run tests
-
-### Deployment
-
-
+To create your own project, click the Create New Project button on the left. To add tasks for that project, click Create New Task Button on the top. To edit or delete the task, Please use the Pen icon or Delete icon. The background of task reflects the priority of task. Blue background means the task is not urgent, Yellow means the task is important, and the red background means that the task is urgent
 
 ## Authors
+👤 **Sinan Sevgi**
+- GitHub: [@sinansevgi](https://github.com/sinansevgi)
+- LinkedIn: [@sinansevgi](https://www.linkedin.com/in/sinansevgi/)
+- Twitter: [@nativeofcybers1](https://twitter.com/nativeofcybers1)
+- Portfolio: [Website](https://sinansevgi.com)
 
-👤 **Author1**
+👤 **Anas Siddiqui**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/linkedinhandle)
+- GitHub: [Anas Siddiqui](https://github.com/smcommits)
+- LinkedIn [Anas Siddiqui](https://www.linkedin.com/in/sm-anas/)
 
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/linkedinhandle)
 
 ## 🤝 Contributing
 
@@ -65,10 +73,4 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
-
-## 📝 License
-
-This project is [MIT](lic.url) licensed.
+The Odin Project
