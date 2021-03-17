@@ -94,7 +94,7 @@ const taskController = () => {
     const formData = taskModule.getFormData();
     task.title = formData.task;
     task.description = formData.description;
-    task.dueDate = formData.dueDate;
+    task.dueDate = formData.due;
     task.setPriority(formData.priority);
     LocalStorage.refresh(project);
     taskModule.destroyForm();
