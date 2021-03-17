@@ -9,7 +9,6 @@ const projectController = () => {
   const submitButton = document.getElementById('submitProject');
   const removeButtons = document.getElementsByClassName('bi-trash');
 
-
   const renderAll = () => {
     Project.projectList.forEach((project) => {
       const indexOfProject = Project.projectList.indexOf(project);
@@ -22,9 +21,10 @@ const projectController = () => {
     const projectIndex = Number(event.target.getAttribute('data-attribute'));
     LocalStorage.remove(Project.projectList[projectIndex]);
     Project.removeProject(projectIndex);
-    event.target.parentNode.previousElementSibling.childNodes[0].click();
     domHelper.removeAllChilds(event.target.parentNode.parentNode);
     renderAll();
+    const defaultLink = document.getElementById('defaultProject');
+    defaultLink.click();
     [...removeButtons].forEach((button) => {
       button.addEventListener('click', (event) => {
         destroyProject(event);

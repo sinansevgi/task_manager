@@ -36,7 +36,12 @@ const projectModule = (() => {
       'data-attribute': index,
     });
 
-    domHelper.appendChildren(projectContainer, [projectLink, removeButton]);
+    if (project.title === 'Default') {
+      projectLink.setAttribute('id', 'defaultProject');
+      domHelper.appendChildren(projectContainer, [projectLink]);
+    } else {
+      domHelper.appendChildren(projectContainer, [projectLink, removeButton]);
+    }
 
     projectList.appendChild(projectContainer);
     return { removeButton, projectLink };

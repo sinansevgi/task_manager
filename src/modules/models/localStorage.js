@@ -12,7 +12,11 @@ class LocalStorage {
 
 
   static parse() {
-    Object.keys(window.localStorage).forEach(key => {
+    const projects = Object.keys(window.localStorage).sort();
+    const defaultIndex = projects.indexOf('Default');
+    projects.splice(defaultIndex, 1);
+    projects.unshift('Default');
+    projects.forEach(key => {
       const tmp = (key) => new Project(key);
       tmp(key);
     });
