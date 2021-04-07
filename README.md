@@ -48,6 +48,10 @@ npm run start:dev
 
 To create your own project, click the Create New Project button on the left. To add tasks for that project, click Create New Task Button on the top. To edit or delete the task, Please use the Pen icon or Delete icon. The background of task reflects the priority of task. Blue background means the task is not urgent, Yellow means the task is important, and the red background means that the task is urgent
 
+## Testing
+
+This project uses the Jest test runner for testing. To run tests you can use `npm run test` or you can use the [jest documentation](https://jestjs.io/docs/getting-started) to know more about testing. 
+
 ## Authors
 👤 **Sinan Sevgi**
 - GitHub: [@sinansevgi](https://github.com/sinansevgi)
