@@ -19,4 +19,4 @@ jobs:
           npm install --save-dev jest babel-jest @babel/core @babel/plugin-proposal-private-property-in-object @babel/preset-env babel-loader
           [ -f babel.config.js ]
       - name: Jest Report
-        run: npx jest .
+        run: npx jest --verbose .
