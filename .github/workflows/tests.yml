@@ -1,0 +1,22 @@
+name: Tests
+
+on: pull_request
+
+env:
+  FORCE_COLOR: 1
+
+jobs:
+  jest:
+    name: Jest
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - name: Setup Jest
+        run: |
+          npm install --save-dev jest babel-jest @babel/core @babel/plugin-proposal-private-property-in-object @babel/preset-env babel-loader
+          [ -f babel.config.js ]
+      - name: Jest Report
+        run: npx jest .
