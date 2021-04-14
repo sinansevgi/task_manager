@@ -1,4 +1,4 @@
-# Project Name
+# Task Manager
 
 A task manager app where you can create various projects and add tasks assosiated with that project. 
 
