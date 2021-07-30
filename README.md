@@ -53,7 +53,6 @@ To create your own project, click the Create New Project button on the left. To 
 👤 **Sinan Sevgi**
 - GitHub: [@sinansevgi](https://github.com/sinansevgi)
 - LinkedIn: [@sinansevgi](https://www.linkedin.com/in/sinansevgi/)
-- Twitter: [@nativeofcybers1](https://twitter.com/nativeofcybers1)
 - Portfolio: [Website](https://sinansevgi.com)
 
 👤 **Anas Siddiqui**
